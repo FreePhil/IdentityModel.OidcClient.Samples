@@ -9,8 +9,10 @@ namespace ConsoleClientWithBrowser
 {
     public class Program
     {
-        static string _authority = "https://demo.identityserver.io";
-        static string _api = "https://demo.identityserver.io/api/test";
+//        static string _authority = "https://demo.identityserver.io";
+        private static string _authority = "http://localhost:5000";
+//        static string _api = "https://demo.identityserver.io/api/test";
+        private static string _api = "http://localhost:5001/secure";
 
         static OidcClient _oidcClient;
         static HttpClient _apiClient = new HttpClient { BaseAddress = new Uri(_api) };
@@ -41,7 +43,7 @@ namespace ConsoleClientWithBrowser
                 Authority = _authority,
                 ClientId = "native.code",
                 RedirectUri = redirectUri,
-                Scope = "openid profile api",
+                Scope = "openid profile",
                 FilterClaims = false,
                 Browser = browser,
                 Flow = OidcClientOptions.AuthenticationFlow.AuthorizationCode,
